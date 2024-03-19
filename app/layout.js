@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import { handlesignout } from "../lib/action";
+import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,15 +14,22 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <SessionProvider>
       <body className={` min-h-svh flex flex-col ${inter.className}`}>
-        <header className="bg-black text-white">
-        <Link href='/'>Home</Link>
+        <header className="bg-black text-white ">
+        <Link href='/' className="mr-4">Home</Link>
+        <Link href='/login' className="mr-4">Login</Link>
+        <form action={handlesignout} className="mr-4 ">
+          <button>Sign out </button>
+        </form>
+
         </header>
         <main className="flex-grow ">
           {children}
         </main>
         <footer className="bg-black text-white mt-auto">This is the footer </footer>
       </body>
+      </SessionProvider>
     </html>
   );
 }

@@ -2,11 +2,11 @@ import Link from "next/link";
 import { getPost } from "../lib/getPost";
 
 
+
 export default  async function Home() {
 
   const post = await getPost();
-  console.log(`'this is the post '${post[0].title}`)
-  
+
 
   return (
     <div className="grid grid-cols-3 gap-4">
