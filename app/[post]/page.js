@@ -26,8 +26,8 @@ const Page = async ({params}) => {
   
 
   return (
-    <div >
-      <img src={article.image} alt={article.title}/>
+    <div className="flex flex-col justify-center items-center overflow-hidden mx-6 my-6">
+      <img src={article.image} alt={article.title} className=" object-cover w-full max-h-96"/>
       <h2>{article.category}</h2>
       <p>{article.article}</p>
     </div>
